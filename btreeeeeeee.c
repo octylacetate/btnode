@@ -147,6 +147,32 @@ void deletion(struct btreeNode *sr,int num){
 						parent->left=x->right;
 					}
 				}
+				//case3
+				char flag;
+				if(x->left!=NULL && x->right!=NULL){
+					struct btreeNode *xSuccesor;
+					xSuccesor = x->right;
+					parent = x;
+					while(xSuccesor->left!=NULL){
+						parent = xSuccesor;
+						xSuccesor = xSuccesor->left;
+						flag='l';					
+					}
+					if(flag=='l'){
+						x->data=xSuccesor->data;
+						parent->left=xSuccesor->right;
+					}
+					else{
+						x->data=xSuccesor->data;
+						parent->right=xSuccesor->right;
+					}
+					
+					
+					
+					x->data= xSuccesor->data;
+					parent->right=xSuccesor->right;
+					
+				}
 }
 
 int main ()
